@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Lora", serif;
+            font-optical-sizing: auto;
+            font-weight: 700;
+            font-style: normal;
+            color: #FFEFC4;
+            background: linear-gradient(29deg, #094e6b, #97D7FF);
+        }
+        main {
+            overflow: hidden;
+            box-shadow:  2px 2px 20px rgb(221, 216, 216);
+            border-top: 20px solid #FFEFC4;
+            position: relative;
+            border-radius: 30px;
+            margin: 20px auto;
+            background-color: #4D8DBA;
+            width: 800px;
+            height: 1000px;
+            margin-bottom: 100px;
+        }
+        form {
+            gap: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        h1 {
+            font-size: 3.3em;
+            text-align: center;
+            position: relative;
+            top: 20px;
+        } 
+        .foto {
+            box-shadow:  2px 2px 20px rgb(221, 216, 216);
+            background-size: cover;
+            border-radius: 30px;
+            border-top: 20px solid #FFEFC4;
+            background-image: url(sea.png);
+            margin: 0 auto;
+            width: 800px;
+            height: 300px;
+        }
+        button {
+            position: relative;
+            margin-top: 20px;
+            margin-left: 300px;
+            border: none;
+            font-family: "Lora", serif;
+            font-optical-sizing: auto;
+            font-weight: 700;
+            font-style: normal;
+            font-weight: 700;
+            font-size: 1.5em;
+            color: #FFEFC4;
+            border-radius: 25px;
+            height: 60px;
+            width: 200px;
+            background-color: #97D7FF;
+            transition: all 0.3s ease-out;
+        }
+        button:hover {
+            background-color: aliceblue;
+            color: rgb(143, 139, 139);
+            transform: scale(105%);
+            box-shadow: 2px 2px 20px rgb(221, 216, 216);
+        }
+        input {
+            position: relative;
+            border-radius: 20px;
+            border: 2px solid grey;
+            margin: 0 auto;
+            height: 46px;
+            width: 700px;
+            transition: all 0.1s ease-out;
+        }
+        input:hover {
+            box-shadow: 2px 2px 20px rgb(253, 250, 250);
+        }
+        label {
+            margin-left: 50px;
+            font-size: 1.7em;
+        }
+        ::placeholder {
+            
+            font-size: 1.3em;
+        }
+        .bola {
+            box-shadow: 2px 2px 20px rgb(0,0,0);
+            height: 700px;
+            width: 700px;
+            border-radius: 50%;
+            background-color: #FFEFC4;
+            position: absolute;
+            bottom: -320px;
+            right: -299px;
+        }
+        .hasil1{
+            display: none;
+            padding: 20px;
+            color: aliceblue;
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto;
+            border-radius: 30px;
+            width: 780px;
+            height: 300px;
+            background: linear-gradient(29deg, #094e6b, #97D7FF);
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="foto">
+    <h1 style="text-shadow: 2px 2px 20px rgb(253, 250, 250); font-size: 4.3em; text-align: center;">Selamat datang</h1>
+    </div>
+    <main>
+        <div class="bola"></div>
+        <h1><strong>Pendaftaran SPNB</strong></h1>
+        <p style="text-align: center; font-size: 1.3em;">Tahun ajaran 6766 / 6767</p>
+        <form >
+        <label for="name">Nama :</label>
+        <input type="text" id = "inputNama" placeholder="Masukan nama anda" class="nama">
+    </form>
+    <form >
+        <label for="name">Jalur yang anda ikuti(japres/ raport):</label>
+        <input type="text" id = "inputJalur" placeholder="Japres/ raport" class="kotak">
+    </form>
+    <form >
+        <label for="name">Masukan nilai raport anda:</label>
+        <input type="text" id = "inputRaport" placeholder="contoh : 90" class="kotak">
+    </form>
+    <form >
+        <label for="name">Masukan nilai prestasi anda :</label>
+        <input type="text" id = "inputPrestasi" placeholder="contoh : 80" class="kotak">
+    </form>
+    <form >
+        <label for="name">Masukan nilai numerasi anda :</label>
+        <input type="text" id = "inputNumerasi" placeholder="contoh : 67" class="kotak">
+    </form>
+    <form >
+        <label for="name">Masukan nilai penjurusan anda :</label>
+        <input type="text" id = "inputPenjurusan" placeholder="contoh : 85" class="kotak">
+    </form>
+
+    <button id="btnClick">Click here</button> 
+</main>
+
+<div class="hasil1" id="kotakHasil" style="display: none;"> 
+    <div class="bola" style="margin-right: -20px; margin-bottom: 200px;"></div>
+    <h2 style="font-size: 2.4em;">Hasil perhitungan :</h2>
+    <p class="pesan" style="position: relative; z-index: 99;"></p>
+</div>
+<script>
+    const pesan = document.querySelector('.pesan');
+    const tombol = document.getElementById('btnClick');
+    const kotakHasil = document.getElementById('kotakHasil');
+    const inputPilihan = document.getElementById('inputJalur'); 
+    const inputNama = document.getElementById('inputNama');
+    const inputRaport = document.getElementById('inputRaport');
+    const inputPrestasi = document.getElementById('inputPrestasi');
+    const inputNumerasi = document.getElementById('inputNumerasi');
+    const inputPenjurusan = document.getElementById('inputPenjurusan');
+
+    tombol.addEventListener('click', function(event) {
+        event.preventDefault(); 
+        const pilihanJalur = inputPilihan.value.toLowerCase().trim();
+        const namaUser = inputNama.value;
+        const nilaiRaport = Number(inputRaport.value);
+        const nilaiPrestasi = Number(inputPrestasi.value);
+        const nilaiNumerasi = Number(inputNumerasi.value);
+        const nilaiPenjurusan = Number(inputPenjurusan.value);
+
+        if ((pilihanJalur === "japres" || pilihanJalur === "raport") && (nilaiPrestasi < 75 && nilaiRaport < 85)) {
+            pesan.textContent = `Maaf ${namaUser}, Anda dinyatakan tidak lulus administrasi`;
+            console.log("Gagal administrasi awal");
+        } 
+        
+        
+        else if (pilihanJalur === "raport") {
+            if (nilaiRaport >= 85) {
+                console.log("Anda berhak mengikuti tes numerasi");
+                if (nilaiPenjurusan >= 65) {
+                    pesan.textContent = `Selamat ${namaUser}, Anda dinyatakan LULUS!`;
+                    console.log("Diterima di jurusan yang dipilih");
+                } else {
+                    pesan.textContent = `Maaf ${namaUser}, Anda dinyatakan tidak LULUS`;
+                    console.log("Anda gagal di nilai penjurusan");
+                }
+            } else {
+                pesan.textContent = `Maaf ${namaUser}, Anda dinyatakan tidak LULUS`;
+                console.log("Anda gagal karena nilai raport kurang dari 85");
+            }
+        } 
+        
+       
+        else if (pilihanJalur === "japres") { 
+            if (nilaiRaport < 85) {
+                if (nilaiPrestasi >= 75) {
+                    console.log("Anda berhak mengikuti tes numerasi dikarenakan nilai prestasi anda >= 75");
+                    if (nilaiPenjurusan >= 65) {
+                        pesan.textContent = `Selamat ${namaUser}, Anda dinyatakan LULUS!`;
+                        console.log("Diterima di jurusan yang dipilih");
+                    } else {
+                        pesan.textContent = `Maaf ${namaUser}, Anda dinyatakan tidak LULUS`;
+                        console.log("Anda gagal di nilai penjurusan");
+                    }
+                } else {
+                    pesan.textContent = `Maaf ${namaUser}, Anda dinyatakan tidak LULUS`;
+                    console.log("Anda gagal karena prestasi kurang dari 75");
+                }
+            } else {
+                console.log("Nilai raport Anda memenuhi syarat jalur prestasi.");
+                if (nilaiPenjurusan >= 65) { 
+                    pesan.textContent = `Selamat ${namaUser}, Anda dinyatakan LULUS`;
+                    console.log("Diterima di jurusan yang dipilih");
+                } else {
+                    pesan.textContent = `Maaf ${namaUser}, Anda dinyatakan tidak LULUS`;
+                    console.log("Anda gagal di nilai penjurusan");
+                }
+            }
+        } 
+        
+      
+        else {
+            pesan.textContent = "Silakan masukkan jalur yang valid (japres/raport)";
+        }
+
+      
+        kotakHasil.style.display = 'block'; 
+    });
+</script>
+
+</body>
+</html>
